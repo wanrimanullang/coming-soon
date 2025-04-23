@@ -107,7 +107,7 @@
       const countdownElement = document.getElementById("countdown");
       const button = document.getElementById("redirect-button");
 
-      const targetTime = new Date("2025-04-23T17:00:00+07:00").getTime();
+      const targetTime = new Date("2025-04-23T17:10:00+07:00").getTime();
       const now = new Date().getTime();
       const distance = targetTime - now;
 
@@ -115,6 +115,9 @@
         countdownElement.innerText = "Waktunya telah tiba!";
         countdownElement.classList.remove("heartbeat");
         button.style.display = "inline-block";
+        setTimeout(() => {
+          window.location.href = "/live-booking";
+        }, 1000); // delay 1 detik untuk UX
         return;
       }
 
