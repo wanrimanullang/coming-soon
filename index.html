@@ -17,7 +17,8 @@
     }
 
     body {
-      background-color: #2c2c2c;
+      background: url('background-image.png') no-repeat center center fixed;
+      background-size: cover;
       color: #ffffff;
       font-family: 'Arial', sans-serif;
       display: flex;
@@ -27,11 +28,26 @@
       text-align: center;
       padding: 20px;
       flex-direction: column;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 0;
     }
 
     .container {
       max-width: 800px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .project-image {
@@ -70,18 +86,6 @@
       }
     }
 
-    #redirect-button {
-      display: none;
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: #fff;
-      background-color: var(--main-color);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
     @media (max-width: 768px) {
       .coming-soon {
         font-size: 1.2rem;
@@ -97,15 +101,13 @@
 <body>
   <div class="container">
     <img src="gambar-properti.jpg" alt="Project Properti Coming Soon" class="project-image">
-    <p class="coming-soon">New Cluster - Opening Soon</p>
+    <p class="coming-soon">NEW CLUSTER - OPENING SOON</p>
     <p class="countdown" id="countdown">Loading countdown...</p>
-    <button id="redirect-button" onclick="window.location.href='/live-booking'"></button>
   </div>
 
   <script>
     function updateCountdown() {
       const countdownElement = document.getElementById("countdown");
-      const button = document.getElementById("redirect-button");
 
       const targetTime = new Date("2025-04-26T10:00:00+07:00").getTime();
       const now = new Date().getTime();
@@ -114,10 +116,9 @@
       if (distance <= 0) {
         countdownElement.innerText = "Waktunya telah tiba!";
         countdownElement.classList.remove("heartbeat");
-        button.style.display = "inline-block";
         setTimeout(() => {
           window.location.href = "/live-booking";
-        }, 1000); // delay 1 detik untuk UX
+        }, 1000);
         return;
       }
 
