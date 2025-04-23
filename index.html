@@ -99,7 +99,7 @@
     <img src="gambar-properti.jpg" alt="Project Properti Coming Soon" class="project-image">
     <p class="coming-soon">New Cluster - Opening Soon</p>
     <p class="countdown" id="countdown">Loading countdown...</p>
-    <button id="redirect-button" onclick="window.location.href='/live-booking'">Masuk ke Live Booking</button>
+    <button id="redirect-button" onclick="window.location.href='/live-booking'"></button>
   </div>
 
   <script>
@@ -107,7 +107,7 @@
       const countdownElement = document.getElementById("countdown");
       const button = document.getElementById("redirect-button");
 
-      const targetTime = new Date("2025-04-23T17:10:00+07:00").getTime();
+      const targetTime = new Date("2025-04-26T10:00:00+07:00").getTime();
       const now = new Date().getTime();
       const distance = targetTime - now;
 
